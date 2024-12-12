@@ -584,6 +584,7 @@ begin
   TableName:='INDX_MAT';
   TableType:=MainForm.Relewy.TableType;
   AdsTableOptions.AdsCharType:=MainForm.Relewy.AdsTableOptions.AdsCharType;
+  AdsTableOptions.AdsCollation:=MainForm.Relewy.AdsTableOptions.AdsCollation;
   AdsTableOptions.AdsLockType:=MainForm.Relewy.AdsTableOptions.AdsLockType;
 
   Name:='INDX_MAT';

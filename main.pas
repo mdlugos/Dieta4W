@@ -766,7 +766,7 @@ begin
       ds.AdsConnection:=AdsConnection;
       ds.TableName:=TableName;
       if FormStorage1.StoredValue['CDX'] then begin
-        ds.TableType:=ttAdsCDX
+        ds.TableType:=ttAdsVFP
       end else begin
         ds.TableType:=ttAdsNTX;
       end;
@@ -774,29 +774,30 @@ begin
 
       ds.ReadOnly:=True;
       ds.AdsTableOptions.AdsCharType:=AdsTableOptions.AdsCharType;
+      ds.AdsTableOptions.AdsCollation:=AdsTableOptions.AdsCollation;
       ds.AdsTableOptions.AdsLockType:=AdsTableOptions.AdsLockType;
       try
         ds.Open;
         ds.Close;
       except
         on e:EADSDatabaseError do
-        if e.ACEErrorCode=iif(TableType=ttAdsCDX,5016,7041)
+        if e.ACEErrorCode=iif(TableType=ttAdsNTX,7041,5016)
         then begin
            Reindex(ds);
         end else
         if e.ACEErrorCode=5025
         then begin
-           if TableType=ttAdsCDX
-             then TableType:=ttAdsNTX
-             else TableType:=ttAdsCDX;
+           if TableType=ttAdsNTX
+             then TableType:=ttAdsVFP
+             else TableType:=ttAdsNTX;
            ds.TableType:=TableType;
-           FormStorage1.StoredValue['CDX']:=(ds.TableType = ttAdsCDX );
+           FormStorage1.StoredValue['CDX']:=(ds.TableType <> ttAdsNTX );
         end else raise;
       end;
 
       TableType:=ds.TableType;
       if (DataSet<>Indeks) and AnsiSameText(Indeksbaza.AsString,b)
-      then if TableType=ttAdsCDX then begin
+      then if TableType<>ttAdsNTX then begin
         if not IndeksNazwa.IsNull
          and not FileExists(ChangeFileExt(GetTablePath(TADSTable(DataSet)),'.cdx'))
          then Reindex(ds);
@@ -826,20 +827,21 @@ begin
         ReadOnly:=True;
         AdsTableOptions.AdsCharType:=TADSTable(DataSet).AdsTableOptions.AdsCharType;
         AdsTableOptions.AdsLockType:=TADSTable(DataSet).AdsTableOptions.AdsLockType;
+        AdsTableOptions.AdsCollation:=TADSTable(DataSet).AdsTableOptions.AdsCollation;
         try
           Open;
         except
           on e:EADSDatabaseError do
-          if e.ACEErrorCode=iif(TableType=ttAdsCDX,5016,7041)
+          if e.ACEErrorCode=iif(TableType=ttAdsNTX,7041,5016)
           then begin
              Reindex(ds);
              Open;
           end else
           if e.ACEErrorCode=5025
           then begin
-             if TableType=ttAdsCDX
-               then TableType:=ttAdsNTX
-               else TableType:=ttAdsCDX;
+             if TableType=ttAdsNTX
+               then TableType:=ttAdsVFP
+               else TableType:=ttAdsNTX;
              TADSTable(DataSet).TableType:=TableType;
              Open;
           end else raise;
@@ -1190,7 +1192,7 @@ begin
       Exclusive:=True;
       Readonly:=False;
       k:=ExtractFilePath(GetTablePath(DataSet));
-      if TableType=ttAdsCDX then
+      if TableType<>ttAdsNTX then
          SysUtils.DeleteFile(ChangeFileExt(GetTablePath(DataSet),'.cdx'))
       else begin
          For i:=IndexFiles.Count-1 Downto 0 do
@@ -1212,7 +1214,7 @@ begin
       repeat
         Application.ProcessMessages;
         if Application.Terminated Then Exit;
-        if TableType=ttAdsCDX //FormStorage1.StoredValue['CDX']
+        if TableType<>ttAdsNTX //FormStorage1.StoredValue['CDX']
          then o:=[optCompound]
          else o:=[];
         if IndeksDescend.AsBoolean
@@ -1223,7 +1225,7 @@ begin
         k:=Expand(IndeksKlucz.AsString);
         f:=Expand(IndeksFor.AsString);
         MsgBar.Caption:=TableName+'/'+IndeksNazwa.AsString+': '+k;
-        if TableType=ttAdsCDX //FormStorage1.StoredValue['CDX']
+        if TableType<>ttAdsNTX //FormStorage1.StoredValue['CDX']
          then AdsCreateIndex( '', IndeksNazwa.AsString, k, f, '', o)
          else AdsCreateIndex( IndeksNazwa.AsString, '', k, f, '', o);
         indeks.Next;
@@ -1276,7 +1278,7 @@ begin
       with baza do for j:=DataSetCount-1 Downto 0 do with TADSTable(DataSets[j]) do
       begin
         Tag:=0;
-        if TableType=ttAdsCDX then begin
+        if TableType<>ttAdsNTX then begin
            SysUtils.DeleteFile(ChangeFileExt(GetTablePath(TADSTable(Baza.DataSets[j])),'.cdx'))
         end else begin
            k:=ExtractFilePath(GetTablePath(TADSTable(DataSets[j])));
@@ -2123,6 +2125,7 @@ begin
     t.TableName:='skladnik';
     t.TableType:=Relewy.TableType;
     t.AdsTableOptions.AdsCharType:=Relewy.AdsTableOptions.AdsCharType;
+    t.AdsTableOptions.AdsCollation:=Relewy.AdsTableOptions.AdsCollation;
     t.AdsTableOptions.AdsLockType:=Relewy.AdsTableOptions.AdsLockType;
 
     t.readonly:=True;

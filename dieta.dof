@@ -49,7 +49,7 @@ Conditionals=
 DebugSourceDirs=
 UsePackages=0
 [Parameters]
-RunParams=defa=E:\m\marklowice\dieta\przedszk path=E:\m\marklowice\dieta MAGDEF=E:\m\marklowice\magazyn\
+RunParams=defa=Z:\m\fenix\dieta path=Z:\m\fenix\dieta MAGDEF=Z:\m\fenix\magazyn\
 HostApplication=
 [Language]
 ActiveLang=

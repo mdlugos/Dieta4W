@@ -1514,8 +1514,6 @@ object MainForm: TMainForm
     LoginPrompt = False
     Username = 'ADSSYS'
     StoreConnected = False
-    Compression = ccAdsCompressionNotSet
-    CommunicationType = ctAdsDefault
     Left = 8
     Top = 104
   end
@@ -2885,8 +2883,6 @@ object MainForm: TMainForm
     LoginPrompt = False
     Username = 'ADSSYS'
     StoreConnected = False
-    Compression = ccAdsCompressionNotSet
-    CommunicationType = ctAdsDefault
     ReadOnly = True
     Left = 32
     Top = 104
@@ -3598,12 +3594,8 @@ object MainForm: TMainForm
   end
   object AdsSettings1: TAdsSettings
     DateFormat = 'yyyy-MM-dd'
-    NumDecimals = 2
-    SetDelphiDate = True
     ShowDeleted = False
     AdsServerTypes = [stADS_LOCAL]
-    NumCachedTables = 0
-    NumCachedCursors = 25
     Left = 64
     Top = 104
   end
