@@ -888,9 +888,8 @@ begin
       begin
         rSurowce.Append;
         For j:=0 To FieldCount-1 Do
-        with rSurowce.FieldByName(Fields[j].FieldName) do
-          if IsNull and CanModify
-          then if DataType<=ftDateTime then AsString:=Fields[j].AsString else Assign(Fields[j]);
+          with rSurowce.FieldByName(Fields[j].FieldName) do
+            if DataType<=ftDateTime then AsString:=Fields[j].AsString else Assign(Fields[j]);
         Next;
       end;
       rSurowce.Post;
