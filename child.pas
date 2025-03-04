@@ -2,7 +2,7 @@ unit Child;
 
 interface
 
-uses szukam, memo, dbmemo, Clipbrd, VclUtils,
+uses szukam, memo, dbmemo, Clipbrd, VclUtils, FileUt,
   SysUtils, Windows, Messages, Classes, Graphics, Controls,
   Forms, Dialogs, Placemnt, Grids, DBGrids, RXDBCtrl, MdDBGrid, DB,
   RXCtrls, ExtCtrls, SpeedBar, StdCtrls, Mask, DBCtrls,
@@ -572,8 +572,9 @@ end;
 procedure TChildForm.RxDBComboEdit2ButtonClick(Sender: TObject);
 var t: TAdsTable;
     s: TFileName;
+    f: TField;
 begin
-  s:=MainForm.FormStorage1.StoredValue['MAGDEF']+'ROBOCZY';
+  s:=NormalDir((MainForm.FormStorage1.StoredValue['MAGDEF']))+'ROBOCZY';
   if FileExists(s+'\Roboczy.add')
    Then s:=s+'\Roboczy.add';
   t:=TAdsTable.Create(Self);
@@ -596,10 +597,11 @@ begin
     end else begin
        FieldByName('Index').Index:=0;
     end;
-  FieldByName('Nr_mag').Visible:=False;
+  f:=FieldByName('Nr_mag');
+  f.Visible:=False;
   With TSzukamForm.Create(t) do
   Try
-    t.Filter:='nr_mag="'+MainForm.FormStorage1.StoredValue['magazyn']+'"';
+    t.Filter:='nr_mag="'+Format('%*s',[f.Size,MainForm.FormStorage1.StoredValue['magazyn']])+'"';
     t.Filtered:=True;
     MdDBGrid1.SelectedIndex:=0;
     MdDBGrid1.Klucz:=TRxDBComboEdit(Sender).Text;

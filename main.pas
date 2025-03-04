@@ -2774,7 +2774,7 @@ begin
 
 
   s:='MAGDEF';
-  t:=RemoveBackSlash((GetEnvVar(s)));
+  t:=RemoveBackSlash(GetEnvVar(s));
   if (t<>'') and  DirExists(t+'\ROBOCZY')
   Then setv(s,t);
 

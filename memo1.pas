@@ -362,7 +362,7 @@ begin
     cAbort:=0;
     with Query1 do
     try
-      s:=RemoveBackSlash(MainForm.FormStorage1.StoredValue['MAGDEF'])+'\ROBOCZY';
+      s:=NormalDir(MainForm.FormStorage1.StoredValue['MAGDEF'])+'ROBOCZY';
       if FileExists(s+'\Roboczy.add') Then s:=s+'\Roboczy.add';
       Magazyn.ConnectPath:=s;
       SQL.SetText('SELECT * FROM DATY');
