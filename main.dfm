@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 289
-  Top = 265
+  Left = 797
+  Top = 170
   Width = 1033
   Height = 519
   Caption = 'Dieta'
@@ -1509,7 +1509,7 @@ object MainForm: TMainForm
     end
   end
   object baza: TAdsConnection
-    ConnectPath = 'E:\m\marklowice\dieta\przedszk\roboczy'
+    ConnectPath = 'F:\e\m\fenix\NowyDieta\roboczy\Roboczy.add'
     AdsServerTypes = [stADS_LOCAL]
     LoginPrompt = False
     Username = 'ADSSYS'
@@ -1615,7 +1615,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'MAIN'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 56
     Top = 160
     object rOsobyDATA: TDateField
@@ -1853,7 +1853,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'ZAPOT'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 104
     Top = 160
     object rSurowceDATA: TDateField
@@ -2086,7 +2086,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'MAIN'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 32
     Top = 184
     object oRelewyKOD_OSOBY: TStringField
@@ -2269,7 +2269,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'MENU'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 32
     Top = 208
     object dRelewyDANIE: TStringField
@@ -2333,7 +2333,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 512
     TableName = 'SUROWCE'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 8
     Top = 232
     object SurowceSKLADNIK: TStringField
@@ -2397,7 +2397,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'ZAPOT'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 32
     Top = 232
     object sRelewySKLADNIK: TStringField
@@ -2473,7 +2473,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
     TableName = 'ELEMENTY'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 8
     Top = 256
     object ElementyELEMENT: TStringField
@@ -2517,7 +2517,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'SKLAD'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 80
     Top = 232
     object sDaniaSKLADNIK: TStringField
@@ -2576,7 +2576,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'SKLAD'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 104
     Top = 208
     object dSurowceDANIE: TStringField
@@ -2761,7 +2761,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'ZAWAR'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 128
     Top = 232
     object sElementySKLADNIK: TStringField
@@ -2842,7 +2842,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'POSILKI'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 80
     Top = 136
     object PosilkiPOSILEK: TStringField
@@ -2878,7 +2878,7 @@ object MainForm: TMainForm
     end
   end
   object init: TAdsConnection
-    ConnectPath = 'E:\m\marklowice\dieta'
+    ConnectPath = 'F:\e\m\fenix\NowyDieta\dieta.add'
     AdsServerTypes = [stADS_LOCAL]
     LoginPrompt = False
     Username = 'ADSSYS'
@@ -2936,6 +2936,10 @@ object MainForm: TMainForm
       item
         Name = 'MAGDEF'
         Value = '..\..\m\marklowice\magazyn\'
+      end
+      item
+        Name = 'Odpadki'
+        Value = '  1'
       end>
     Left = 208
     Top = 104
@@ -2999,7 +3003,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'OSOBY'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 192
     Top = 184
     object OsoJobKOD_OSOBY: TStringField
@@ -3118,7 +3122,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'ELEMENTY'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 192
     Top = 256
     object EleJobELEMENT: TStringField
@@ -3196,7 +3200,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'MENU'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 264
     Top = 160
     object RDaJobData: TDateField
@@ -3269,7 +3273,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'ZAPOT'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 288
     Top = 160
     object RSuJobData: TDateField
@@ -3319,7 +3323,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'MAIN'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 240
     Top = 160
     object ROsJobDATA: TDateField
@@ -3360,7 +3364,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'SKLAD'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 288
     Top = 208
     object DSuJobDANIE: TStringField
@@ -3395,7 +3399,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'ZAWAR'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 312
     Top = 232
     object SElJobSKLADNIK: TStringField
@@ -3482,7 +3486,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsCharType = OEM
     ReadOnly = True
     TableName = 'MAIN'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 216
     Top = 184
     object OReJobKOD_OSOBY: TStringField
@@ -3606,7 +3610,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsLockType = Compatible
     AdsTableOptions.AdsCharType = OEM
     TableName = 'INDEKS'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 8
     Top = 136
     object IndeksBAZA: TStringField
@@ -4052,7 +4056,7 @@ object MainForm: TMainForm
     AdsTableOptions.AdsIndexPageSize = 512
     ReadOnly = True
     TableName = 'RELEWY'
-    TableType = ttAdsCDX
+    TableType = ttAdsNTX
     Left = 216
     Top = 256
     object EReJobELEMENT: TStringField

@@ -164,7 +164,7 @@ begin
               Label1.Caption:='&Danie:';
               Label2.Visible:=True;
            end else begin
-              RxDBComboEdit1.Width:=RxDBComboEdit1.Parent.ClientWidth - RxDBComboEdit1.Left;
+              RxDBComboEdit1.Width:=RxDBComboEdit1.Parent.ClientWidth - RxDBComboEdit1.Left - 4;
            end;
            if Label1.Caption='' Then
               Label1.Caption:='&'+t.Fields[0].DisplayLabel+':';
@@ -389,7 +389,7 @@ begin
            begin
              OkBtn.Kind:=bkClose;
              CancelBtn.Visible:=False;
-             RxDbComboEdit1.Width:=OkBtn.Left - RxDbComboEdit1.Left -4;
+             RxDbComboEdit1.Width:=OkBtn.Left - RxDbComboEdit1.Left - 4;
              Show;
            end;
       end;

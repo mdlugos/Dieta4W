@@ -1,24 +1,18 @@
 inherited sElementyForm: TsElementyForm
+  Left = 1306
+  Top = 383
   Caption = 'sElementyForm'
-  ClientWidth = 414
+  ClientWidth = 464
   PixelsPerInch = 96
   TextHeight = 13
   object PanelSu: TPanel [0]
     Left = 0
     Top = 26
-    Width = 414
+    Width = 464
     Height = 45
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
-    inherited CancelBtn: TBitBtn [4]
-      Left = 279
-      Top = 4
-    end
-    inherited OkBtn: TBitBtn [5]
-      Left = 346
-      Top = 4
-    end
     object Label6: TLabel
       Left = 0
       Top = 3
@@ -31,7 +25,7 @@ inherited sElementyForm: TsElementyForm
     end
     object Label7: TLabel
       Left = 9
-      Top = 27
+      Top = 28
       Width = 34
       Height = 22
       Alignment = taRightJustify
@@ -58,27 +52,28 @@ inherited sElementyForm: TsElementyForm
       Caption = '='
     end
     object Label10: TLabel
-      Left = 229
+      Left = 343
       Top = 27
-      Width = 21
-      Height = 14
+      Width = 114
+      Height = 13
       Alignment = taRightJustify
-      AutoSize = False
-      Caption = '&Dla:'
+      Anchors = [akTop, akRight]
+      Caption = 'na 100 g czêœci jadalnej'
       FocusControl = DBEdit10
     end
-    object DBText1: TDBText
-      Left = 280
-      Top = 27
-      Width = 129
-      Height = 16
-      DataField = 'JEDN'
-      DataSource = DataSource2
+    object Label3: TLabel
+      Left = 224
+      Top = 28
+      Width = 47
+      Height = 13
+      Anchors = [akTop, akRight]
+      Caption = ', &potrzeba'
+      FocusControl = DBEdit9
     end
     object DBEdit8: TDBEdit
       Left = 160
       Top = 25
-      Width = 30
+      Width = 33
       Height = 21
       DataField = 'PRZEL'
       DataSource = DataSource2
@@ -86,9 +81,9 @@ inherited sElementyForm: TsElementyForm
       OnEnter = EditEnter
     end
     object DBEdit9: TDBEdit
-      Left = 193
+      Left = 196
       Top = 25
-      Width = 31
+      Width = 29
       Height = 21
       DataField = 'JEDN'
       DataSource = DataSource2
@@ -96,10 +91,11 @@ inherited sElementyForm: TsElementyForm
       OnEnter = EditEnter
     end
     object DBEdit10: TDBEdit
-      Left = 252
+      Left = 276
       Top = 25
-      Width = 27
+      Width = 42
       Height = 21
+      Anchors = [akTop, akRight]
       DataField = 'GRAM'
       DataSource = DataSource2
       TabOrder = 5
@@ -144,9 +140,9 @@ inherited sElementyForm: TsElementyForm
     end
     object RxDBComboEdit3: TRxDBComboEdit
       Left = 45
-      Top = 3
-      Width = 364
-      Height = 19
+      Top = 1
+      Width = 414
+      Height = 20
       ButtonHint = 'Przegl¹d kartoteki'
       DataField = 'NAZWA'
       DataSource = DataSource2
@@ -172,7 +168,7 @@ inherited sElementyForm: TsElementyForm
     end
   end
   inherited SpeedBar1: TSpeedBar [1]
-    Width = 414
+    Width = 464
     inherited Label1: TLabel
       Left = 81
       Width = 47
@@ -180,29 +176,39 @@ inherited sElementyForm: TsElementyForm
       Visible = True
     end
     inherited Label2: TLabel
-      Left = 311
+      Left = 361
     end
-    inherited RxDBComboEdit1: TRxDBComboEdit [2]
-      Width = 281
-      Visible = True
+    inherited CancelBtn: TBitBtn
+      Left = 329
+      Top = 4
     end
-    inherited RxDBLookupCombo1: TRxDBLookupCombo [3]
-      Left = 289
+    inherited OkBtn: TBitBtn
+      Left = 396
+      Top = 4
+    end
+    inherited RxDBLookupCombo1: TRxDBLookupCombo
+      Left = 339
       Width = 121
+    end
+    inherited RxDBComboEdit1: TRxDBComboEdit
+      Left = 134
+      Width = 325
+      Visible = True
     end
   end
   inherited MdDBGrid1: TMdDBGrid [2]
     Top = 74
-    Width = 414
+    Width = 464
     Height = 162
   end
   inherited RxSplitter1: TRxSplitter [3]
     Top = 71
-    Width = 414
+    Width = 464
     ControlFirst = PanelSu
     Visible = True
   end
   inherited DataSource2: TDataSource
+    OnDataChange = DataSource2DataChange
     Left = 216
   end
 end
