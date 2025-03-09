@@ -1514,6 +1514,7 @@ object MainForm: TMainForm
     LoginPrompt = False
     Username = 'ADSSYS'
     StoreConnected = False
+    AdsCollation = 'ANSI:pl'
     Left = 8
     Top = 104
   end
@@ -1528,9 +1529,8 @@ object MainForm: TMainForm
     BeforeDelete = RelewyBeforeDelete
     OnCalcFields = RelewyCalcFields
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'RELEWY'
     TableType = ttAdsVFP
     Left = 8
@@ -1612,8 +1612,7 @@ object MainForm: TMainForm
     OnCalcFields = rOsobyCalcFields
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'MAIN'
     TableType = ttAdsVFP
     Left = 56
@@ -1742,8 +1741,7 @@ object MainForm: TMainForm
     OnCalcFields = IlePosCalc
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'MENU'
     TableType = ttAdsVFP
     Left = 80
@@ -1850,8 +1848,7 @@ object MainForm: TMainForm
     OnCalcFields = rSurowceCalcFields
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'ZAPOT'
     TableType = ttAdsVFP
     Left = 104
@@ -2005,9 +2002,8 @@ object MainForm: TMainForm
     OnCalcFields = FlagiCalcFields
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'OSOBY'
     TableType = ttAdsVFP
     Left = 8
@@ -2082,8 +2078,7 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     OnCalcFields = rOsobyCalcFields
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'MAIN'
     TableType = ttAdsVFP
@@ -2164,8 +2159,7 @@ object MainForm: TMainForm
     OnCalcFields = DaniaCalcFields
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'DANIA'
     TableType = ttAdsVFP
     Left = 8
@@ -2265,8 +2259,7 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     OnCalcFields = IlePosCalc
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'MENU'
     TableType = ttAdsVFP
@@ -2329,9 +2322,8 @@ object MainForm: TMainForm
     OnCalcFields = FlagiCalcFields
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 512
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'SUROWCE'
     TableType = ttAdsVFP
     Left = 8
@@ -2393,8 +2385,7 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     OnCalcFields = IlePosCalc
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'ZAPOT'
     TableType = ttAdsVFP
@@ -2469,9 +2460,8 @@ object MainForm: TMainForm
     OnCalcFields = FlagiCalcFields
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'ELEMENTY'
     TableType = ttAdsVFP
     Left = 8
@@ -2513,8 +2503,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'SKLAD'
     TableType = ttAdsVFP
@@ -2573,8 +2562,7 @@ object MainForm: TMainForm
     AfterDelete = SaveAfterPost
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'SKLAD'
     TableType = ttAdsVFP
     Left = 104
@@ -2670,9 +2658,8 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'ZAWAR'
     TableType = ttAdsVFP
@@ -2758,8 +2745,7 @@ object MainForm: TMainForm
     AfterDelete = SaveAfterPost
     OnNewRecord = LpOnNewRecord
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'ZAWAR'
     TableType = ttAdsVFP
     Left = 128
@@ -2820,8 +2806,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = init
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'GRUPY'
     TableType = ttAdsVFP
     Left = 56
@@ -2839,8 +2824,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = init
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'POSILKI'
     TableType = ttAdsVFP
     Left = 80
@@ -2858,8 +2842,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = init
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'DIETY'
     TableType = ttAdsVFP
     Left = 104
@@ -2884,6 +2867,7 @@ object MainForm: TMainForm
     Username = 'ADSSYS'
     StoreConnected = False
     ReadOnly = True
+    AdsCollation = 'ANSI:pl'
     Left = 32
     Top = 104
   end
@@ -2951,9 +2935,8 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     OnCalcFields = RelewyCalcFields
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'RELEWY'
     TableType = ttAdsVFP
     Left = 192
@@ -3000,8 +2983,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'OSOBY'
     TableType = ttAdsVFP
     Left = 192
@@ -3033,9 +3015,8 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'DANIA'
     TableType = ttAdsVFP
     Left = 192
@@ -3076,9 +3057,8 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'SUROWCE'
     TableType = ttAdsVFP
     Left = 192
@@ -3119,8 +3099,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'ELEMENTY'
     TableType = ttAdsVFP
     Left = 192
@@ -3196,8 +3175,7 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     OnCalcFields = IlePosCalc
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'MENU'
     TableType = ttAdsVFP
@@ -3269,8 +3247,7 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     OnCalcFields = IlePosCalc
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'ZAPOT'
     TableType = ttAdsVFP
@@ -3319,8 +3296,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'MAIN'
     TableType = ttAdsVFP
@@ -3360,8 +3336,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'SKLAD'
     TableType = ttAdsVFP
@@ -3396,8 +3371,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'ZAWAR'
     TableType = ttAdsVFP
     Left = 312
@@ -3426,8 +3400,7 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     OnCalcFields = IlePosCalc
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'MENU'
     TableType = ttAdsVFP
@@ -3482,8 +3455,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'MAIN'
     TableType = ttAdsVFP
@@ -3501,8 +3473,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'ZAPOT'
     TableType = ttAdsVFP
@@ -3542,8 +3513,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'SKLAD'
     TableType = ttAdsVFP
@@ -3560,9 +3530,8 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'ZAWAR'
     TableType = ttAdsVFP
@@ -3607,7 +3576,7 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = init
-    AdsTableOptions.AdsLockType = Compatible
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'INDEKS'
     TableType = ttAdsVFP
     Left = 8
@@ -3969,9 +3938,8 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     OnCalcFields = eRelewyCalcFields
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'RELEWY'
     TableType = ttAdsVFP
@@ -4050,9 +4018,8 @@ object MainForm: TMainForm
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsLockType = Compatible
-    AdsTableOptions.AdsCharType = OEM
     AdsTableOptions.AdsIndexPageSize = 512
+    AdsTableOptions.AdsCollation = 'ANSI:pl'
     ReadOnly = True
     TableName = 'RELEWY'
     TableType = ttAdsVFP
