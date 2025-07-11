@@ -1510,7 +1510,7 @@ object MainForm: TMainForm
   end
   object baza: TAdsConnection
     ConnectPath = 'Z:\m\fenix\NowyDieta\roboczy\Roboczy.add'
-    AdsServerTypes = [stADS_REMOTE]
+    AdsServerTypes = [stADS_REMOTE, stADS_LOCAL, stADS_AIS]
     LoginPrompt = False
     Username = 'ADSSYS'
     StoreConnected = False
@@ -1521,7 +1521,7 @@ object MainForm: TMainForm
   object Relewy: TAdsTable
     Filter = 'DIETA=""'
     Filtered = True
-    IndexName = 'relewy'
+    IndexName = 'RELEWY'
     MasterFields = 'DATA;POSILEK;DIETA'
     StoreActive = False
     BeforeOpen = TableBeforeOpen
@@ -2652,7 +2652,7 @@ object MainForm: TMainForm
     end
   end
   object eSurowce: TAdsTable
-    IndexName = 'zaw_ele'
+    IndexName = 'ZAW_ELE'
     MasterFields = 'ELEMENT'
     MasterSource = DSElementy
     StoreActive = False
@@ -2862,7 +2862,7 @@ object MainForm: TMainForm
   end
   object init: TAdsConnection
     ConnectPath = 'Z:\m\fenix\NowyDieta\dieta.add'
-    AdsServerTypes = [stADS_REMOTE]
+    AdsServerTypes = [stADS_REMOTE, stADS_LOCAL, stADS_AIS]
     LoginPrompt = False
     Username = 'ADSSYS'
     StoreConnected = False
@@ -3010,12 +3010,12 @@ object MainForm: TMainForm
     end
   end
   object DanJob: TAdsTable
-    IndexName = 'dan_kod'
+    IndexName = 'DAN_KOD'
     MasterFields = 'DANIE'
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
-    AdsTableOptions.AdsIndexPageSize = 1024
+    AdsTableOptions.AdsIndexPageSize = 512
     AdsTableOptions.AdsCollation = 'ANSI:pl'
     TableName = 'DANIA'
     TableType = ttAdsVFP
@@ -3526,7 +3526,7 @@ object MainForm: TMainForm
     end
   end
   object ESuJob: TAdsTable
-    IndexName = 'zaw_ele'
+    IndexName = 'ZAW_ELE'
     StoreActive = False
     BeforeOpen = TableBeforeOpen
     AdsConnection = baza
@@ -3568,7 +3568,7 @@ object MainForm: TMainForm
   object AdsSettings1: TAdsSettings
     DateFormat = 'yyyy-MM-dd'
     ShowDeleted = False
-    AdsServerTypes = [stADS_REMOTE]
+    AdsServerTypes = [stADS_REMOTE, stADS_LOCAL, stADS_AIS]
     Left = 64
     Top = 104
   end
@@ -3577,6 +3577,7 @@ object MainForm: TMainForm
     BeforeOpen = TableBeforeOpen
     AdsConnection = init
     AdsTableOptions.AdsCollation = 'ANSI:pl'
+    ReadOnly = True
     TableName = 'INDEKS'
     TableType = ttAdsVFP
     Left = 8

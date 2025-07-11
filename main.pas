@@ -781,7 +781,7 @@ begin
         ds.Close;
       except
         on e:EADSDatabaseError do
-        if e.ACEErrorCode=iif(TableType=ttAdsNTX,7041,5016)
+        if (e.ACEErrorCode=5016) or (e.ACEErrorCode=7041)
         then begin
            Reindex(ds);
         end else
@@ -832,7 +832,7 @@ begin
           Open;
         except
           on e:EADSDatabaseError do
-          if e.ACEErrorCode=iif(TableType=ttAdsNTX,7041,5016)
+          if (e.ACEErrorCode=5016) or (e.ACEErrorCode=7041)
           then begin
              Reindex(ds);
              Open;
@@ -935,7 +935,17 @@ begin
     FormStorage1.StoredValue['GrStr']:=GrStr;
   end;
 
+  if grex then begin
+    GrExLst:=TStringList.Create;
+    for i:=1 to Length(GrStr) do
+     for j:=1 to Length(DietyStr) do
+      GrExLst.Add(DietyStr[j]+'/'+GrStr[i]+' '+DietyLst[j-1]+'/'+GrLst[i-1]);
+
+    eRelewy.Filter:='dieta>="0" .and. substr(dieta,2,1)="/" .and. substr(dieta,3,1)>="0" .and. substr(dieta,4,1)=" "';
+  end else eRelewy.Filter:='dieta>="0" .and. substr(dieta,2,1)=" "';
+
     RelJob.Open;
+    DanJob.Open;
     Relewy.Open;
     Relewy.Last;
 
@@ -954,15 +964,6 @@ begin
     end;
 
     ROsJob.Close;
-
-  if grex then begin
-    GrExLst:=TStringList.Create;
-    for i:=1 to Length(GrStr) do
-     for j:=1 to Length(DietyStr) do
-      GrExLst.Add(DietyStr[j]+'/'+GrStr[i]+' '+DietyLst[j-1]+'/'+GrLst[i-1]);
-
-    eRelewy.Filter:='dieta>="0" .and. substr(dieta,2,1)="/" .and. substr(dieta,3,1)>="0" .and. substr(dieta,4,1)=" "';
-  end else eRelewy.Filter:='dieta>="0" .and. substr(dieta,2,1)=" "';
 
     eRelewy.Filtered:=True;
 
@@ -993,7 +994,7 @@ begin
     end;
 
     Elementy.FindKey([Format('%*d',[ElementyElement.Size,StrToInt(FormStorage1.StoredValue['Element'])])]);
-    DanJob.Open;
+    //DanJob.Open;
     SurJob.Open;
     EleJob.Open;
     RDaJob.Open;
@@ -1290,7 +1291,8 @@ begin
            IndexFiles.Clear;
         end;
       end;
-      with baza do for j:=DataSetCount-1 Downto 0 do
+      with baza do for j:=0 to DataSetCount-1 do
+      if (Copy(Name,4,3)='Job') Then
         TableBeforeOpen(DataSets[j]);
 
     end;
