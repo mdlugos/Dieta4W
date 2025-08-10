@@ -4041,4 +4041,8 @@ object MainForm: TMainForm
     Left = 488
     Top = 312
   end
+  object frAddFunctionLibrary1: TfrAddFunctionLibrary
+    Left = 488
+    Top = 136
+  end
 end

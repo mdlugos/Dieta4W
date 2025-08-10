@@ -462,6 +462,7 @@ type
     DReJobDIETA: TAdsStringField;
     DanJobOPIS: TMemoField;
     frHTMLTableExport1: TfrHTMLTableExport;
+    frAddFunctionLibrary1: TfrAddFunctionLibrary;
     procedure OknaItemClick(Sender: TObject);
     procedure SpeedBar1DblClick(Sender: TObject);
     procedure OpenDatabases(Sender: TObject);
@@ -3157,7 +3158,6 @@ begin
        with TChildForm.Create2(Application,rDania) do
        try
      RxDBComboEdit1.Visible:=False;
-     RxDBLookupCombo1.Visible:=False;
        rDania.IndexFieldNames:='Data;Posilek;Pozycja';
        rDania.FindKey([rSurowceData.Value,rSurowcePosilek.Value]);
        MdDbGrid1.SelectedField:=rDaniaPOZYCJA;

@@ -1,0 +1,125 @@
+[Compiler]
+A=1
+B=0
+C=1
+D=1
+E=0
+F=0
+G=1
+H=1
+I=1
+J=1
+K=0
+L=1
+M=0
+N=1
+O=0
+P=1
+Q=0
+R=0
+S=0
+T=0
+U=0
+V=1
+W=0
+X=1
+Y=1
+Z=1
+ShowHints=1
+ShowWarnings=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[Linker]
+MapFile=0
+OutputObjs=0
+ConsoleApp=1
+DebugInfo=0
+RemoteSymbols=0
+MinStackSize=16384
+MaxStackSize=1048576
+ImageBase=4194304
+ExeDescription=Advantage TDataSet Descendant Components
+[Directories]
+OutputDir=
+UnitOutputDir=
+PackageDLLOutputDir=
+PackageDCPOutputDir=
+SearchPath=$(DELPHI)\Source\poprawki;$(DELPHI)\lib;E:\ADS62\Delphi5;$(DELPHI)\fr;$(DELPHI)\RX\Units
+Packages=VCL50;VCLX50;VCLDB50;VCLSMP50;ADSD50;VCLBDE50;VCLIB50;FRADS5;VCLDBX50;INET50;INETDB50;TEEUI50;TEEDB50;TEE50;VCLIE50;dclaxserver50;dclocx50;NMFAST50;QRPT50;RXBDE5;TEEQR50;ibevnt50
+Conditionals=
+DebugSourceDirs=$(DELPHI)\Source\Vcl
+UsePackages=0
+[Parameters]
+RunParams=c:\zbyt\wydruk.prn.uc SCREEN 
+HostApplication=
+[Language]
+ActiveLang=
+ProjectLang=$00000415
+RootDir=
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1045
+CodePage=1250
+[Version Info Keys]
+FileVersion=1.0.0.0
+[Excluded Packages]
+$(DELPHI)\Projects\Bpl\dclrxbd5.bpl=RX Library BDE Database Components
+$(DELPHI)\Projects\Bpl\JclBaseExpertd50.bpl=JclBaseExpertd50
+$(DELPHI)\Projects\Bpl\JclDebugExpertd50.bpl=JclDebugExpertd50
+$(DELPHI)\Projects\Bpl\JclProjectAnalysisExpertd50.bpl=JclProjectAnalysisExpertd50
+$(DELPHI)\Projects\Bpl\JclFavoriteFoldersExpertd50.bpl=JclFavoriteFoldersExpertd50
+$(DELPHI)\Projects\Bpl\JclRepositoryExpertd50.bpl=JclRepositoryExpertd50
+$(DELPHI)\Projects\Bpl\JclThreadNameExpertd50.bpl=JclThreadNameExpertd50
+$(DELPHI)\Projects\Bpl\JclUsesExpertd50.bpl=JclUsesExpertd50
+$(DELPHI)\Projects\Bpl\JclSIMDViewExpertd50.bpl=JclSIMDViewExpertd50
+$(DELPHI)\Projects\Bpl\JvAppFrmD5D.bpl=JVCL Application and Form Components
+$(DELPHI)\Projects\Bpl\JvBandsD5D.bpl=JVCL Band Objects
+$(DELPHI)\Projects\Bpl\JvBDED5D.bpl=JVCL BDE Components
+$(DELPHI)\Projects\Bpl\JvCmpD5D.bpl=JVCL Non-Visual Components
+$(DELPHI)\Projects\Bpl\JvCoreD5D.bpl=JVCL Core Components
+$(DELPHI)\Projects\Bpl\JvCryptD5D.bpl=JVCL Encryption and Compression
+$(DELPHI)\Projects\Bpl\JvCtrlsD5D.bpl=JVCL Visual Controls
+$(DELPHI)\Projects\Bpl\JvCustomD5D.bpl=JVCL Custom Controls
+$(DELPHI)\Projects\Bpl\JvDBD5D.bpl=JVCL Database Components
+$(DELPHI)\Projects\Bpl\JvDlgsD5D.bpl=JVCL Dialog Components
+$(DELPHI)\Projects\Bpl\JvDockingD5D.bpl=JVCL Docking Components
+$(DELPHI)\Projects\Bpl\JvDotNetCtrlsD5D.bpl=JVCL DotNet Controls
+$(DELPHI)\Projects\Bpl\JvEDID5D.bpl=JVCL EDI Components
+$(DELPHI)\Projects\Bpl\JvGlobusD5D.bpl=JVCL Globus Components
+$(DELPHI)\Projects\Bpl\JvHMID5D.bpl=JVCL HMI Controls
+$(DELPHI)\Projects\Bpl\JvInterpreterD5D.bpl=JVCL Interpreter Components
+$(DELPHI)\Projects\Bpl\JvJansD5D.bpl=JVCL Jans Components
+$(DELPHI)\Projects\Bpl\JvManagedThreadsD5D.bpl=JVCL Managed Threads
+$(DELPHI)\Projects\Bpl\JvMMD5D.bpl=JVCL Multimedia and Image Components
+$(DELPHI)\Projects\Bpl\JvNetD5D.bpl=JVCL Network Components
+$(DELPHI)\Projects\Bpl\JvPageCompsD5D.bpl=JVCL Page Style Components
+$(DELPHI)\Projects\Bpl\JvPluginD5D.bpl=JVCL Plugin Components
+$(DELPHI)\Projects\Bpl\JvPrintPreviewD5D.bpl=JVCL Print Preview Components
+$(DELPHI)\Projects\Bpl\JvRuntimeDesignD5D.bpl=JVCL Runtime Design Components
+$(DELPHI)\Projects\Bpl\JvStdCtrlsD5D.bpl=JVCL Standard Controls
+$(DELPHI)\Projects\Bpl\JvSystemD5D.bpl=JVCL System Components
+$(DELPHI)\Projects\Bpl\JvTimeFrameworkD5D.bpl=JVCL Time Framework
+$(DELPHI)\Projects\Bpl\JvValidatorsD5D.bpl=JVCL Validators and Error Provider Components
+$(DELPHI)\Projects\Bpl\JvWizardD5D.bpl=JVCL Wizard
+$(DELPHI)\Projects\Bpl\JvXPCtrlsD5D.bpl=JVCL XP Controls
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(DELPHI)\Source\Vcl
+[HistoryLists\hlConditionals]
+Count=1
+Item0=UTF8
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlSearchPath]
+Count=1
+Item0=$(DELPHI)\Source\poprawki;$(DELPHI)\lib;E:\ADS62\Delphi5;$(DELPHI)\fr;$(DELPHI)\RX\Units
