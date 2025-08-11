@@ -830,7 +830,7 @@ begin
  end;
  fname := paramstr(1);
  if not fileexists(fname) then begin
-    writeln('Zï¿½y parametr - podany plik nie istnieje');
+    writeln('Zˆy parametr - podany plik nie istnieje');
     exit;
  end;
  s:=Paramstr(2);
