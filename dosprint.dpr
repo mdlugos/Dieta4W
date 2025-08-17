@@ -22,7 +22,7 @@ var fh: file of Char;
     dp, np, lpifix, pcl: boolean;
     n, lField, tField, dw, strona: Word;
     k: Char;
-    l,lpi, cond, cpi: Real;
+    pclsize,l,lpi, cond, cpi: Real;
     push: tPoint;
     palette, a, ds: ShortInt;
     e,f: Longint;
@@ -47,7 +47,7 @@ begin
       //Canv.Font.Style:=fs;
       Result := Metrics.tmAveCharWidth;
     end
-    else Result:= Canv.Font.Pixelsperinch * cond / 120 * dw / cpi;
+    else Result:= Canv.Font.Pixelsperinch * cond * dw / (120 * cpi );
 end;
 
 function StringWidth(l: Integer): Word;
@@ -74,7 +74,7 @@ procedure setlpi;
 begin
  GetTextMetrics(Canv.Handle, Metrics);
  lpi := canv.font.pixelsperinch / Metrics.tmHeight;
- lpi:=lpi*dw; //podw¢jna wysoko˜† na drukarce Epson
+ lpi:=lpi/dw; //podw¢jna wysoko˜† na drukarce Epson
  if lpi>6.4 then lpi:=6.4;
 end;
 
@@ -140,9 +140,12 @@ var l: Real;
     i,g: Integer;
 begin
 
-  canv.Font.Height:= Round(cond / cpi * dw * canv.Font.PixelsPerInch ) div 72;
-
-  if not dp then begin
+  if dp then begin
+    if pcl then
+     canv.Font.Height:=Round( pclsize * canv.Font.PixelsPerInch / 72 )
+    else canv.Font.Height:=Round(cond * dw * canv.Font.PixelsPerInch / (72 * cpi));
+  end else begin
+    canv.Font.Height:=Round(cond * dw * canv.Font.PixelsPerInch / (72 * cpi));
     l:=CharWidthR;
     g:=0;
     for i:=1 to 512 do begin
@@ -168,6 +171,7 @@ begin
  np:=False; //new page
  ds:=0; //superscript
  cpi:=10;
+ //pclheight:=16;
  cond:=120;
  palette:=-4;
  lpifix:= False;
@@ -180,14 +184,15 @@ begin
  //SetBkMode( canv.handle, TRANSPARENT );
  //SetTextAlign(canv.handle, TA_BASELINE or TA_LEFT or TA_NOUPDATECP);
 
- ff:='Lucida Console'; //'Consolas';//'Courier New';
- fp:='Verdana'; //'Tahoma'; //'Trebuchet MS'; //'Verdana';//'Times New Roman';
+ ff:='Consolas';//'Lucida Console'; //'Consolas';//'Courier New';
+ fp:='Times New Roman'; //'Verdana'; //'Tahoma'; //'Trebuchet MS'; //'Verdana';//'Times New Roman';
 
  with canv.font do begin
 {$ifndef UTF8}
    charset := OEM_CHARSET;
 {$endif}
    name := ff;
+   pclsize:=12;
  end;
 
  setsize;
@@ -229,8 +234,8 @@ begin
          if ds=0 Then // sup/super script
             Font.Style := fs - [fsUnderline]
          else
-            Font.Height:= Round(cond / cpi * dw * canv.Font.PixelsPerInch / 108); //72* 3/2
-         //pap:=nil;{
+            if pcl and dp then Font.Height:=Round(pclsize * Font.PixelsPerInch / 108)
+            else Font.Height:=Round(cond * dw * Font.PixelsPerInch / (108 * cpi));
          if dp Then
             pap:=nil
          else begin
@@ -272,7 +277,8 @@ begin
                      MoveTo(PenPos.X ,PenPos.Y - n);
                      Font.Style := fs;
            end;
-         end else Font.Height:= Round(cond / cpi * dw * canv.Font.PixelsPerInch ) div 72;
+         end else if pcl and dp then Font.Height:=Round(pclsize * Font.PixelsPerInch / 72)  //72 *3/2
+            else Font.Height:=Round(cond * dw * Font.PixelsPerInch / (72 * cpi));
        s:='';
      end;
      case k of
@@ -282,6 +288,7 @@ begin
                end;
           #9 {HT}: begin
                   if not checkstart Then Break;
+                  // w tabach od lewej
                   n:=Round((PenPos.X-lfield) / CharWidthR) div 8 +1;
                   n:=n* 8; // * CharWidth + lfield;
                   if fsUnderline in Font.Style then begin
@@ -476,21 +483,30 @@ begin
                                   case UpCase(k) of
                                     'S': case Byte(Round(l)) of
                                             0: begin
-                                                    cond:=120;
-                                                    cpi:=10;
-                                                    dw:=1;
-                                                    setsize;
-                                                 end;
+                                                  if dp then pclsize:=12      //Round(cond * dw / cpi);
+                                                  else begin
+                                                      cond:=120;
+                                                      cpi:=10;
+                                                      dw:=1;
+                                                  end;
+                                                  setsize;
+                                               end;
                                             2: begin
+                                                  if dp then pclsize:=7.2
+                                                  else begin
                                                     cond:=72;
                                                     cpi:=10;
                                                     dw:=1;
+                                                 end;
                                                     setsize;
                                                  end;
                                             4: begin
+                                                  if dp then pclsize:=10
+                                                  else begin
                                                     cond:=120;
                                                     cpi:=12;
                                                     dw:=1;
+                                                 end;
                                                     setsize;
                                                  end;
                                          end;
@@ -516,7 +532,9 @@ begin
                                            s:='';
                                          end;
                                     'H': begin
-                                           //font.Size:= Round(120 / l);
+                                           //Round(cond * dw * canv.Font.PixelsPerInch / (72 * cpi));
+                                          if dp then pclsize:= 120/l
+                                          else begin
                                            cond:=120;
                                            cpi:=l;
                                            dw:=1;
@@ -531,25 +549,21 @@ begin
                                              cond:=72;
                                              cpi:=12;
                                            end;
+                                           end;
                                            setsize;
                                          end;
                                     'V': if dp then begin
-                                           //font.Size:= Round(l);
-                                           cond:=l * cpi / dw;
+                                          if dp then pclsize:=l
+                                          else cond:=l * cpi / dw;
                                            setsize;
                                          end;
                                     'P': begin
                                            if not dp and (l=1) Then
-                                           begin
-                                            Font.Name:=fp;
-                                            //Font.Size:=Round( (cond div cpi * dw * Abs(Font.Height)) / (Metrics.tmHeight + Metrics.tmExternalLeading));
-                                           end
+                                            Font.Name:=fp
                                            Else if dp and (l=0) Then
-                                           begin
                                             Font.Name:=ff;
-                                            //font.Size := cond div cpi * dw;
-                                           end;
                                            dp:=(l=1);
+                                           setsize;
                                          end;
                                     'S': case Byte(Round(l)) of
                                            0: font.Style:=font.Style - [fsItalic];
@@ -668,6 +682,8 @@ begin
                         lpifix:= False;
                         lpi:=99;
                         cpi:=10;
+                        dp:=false;
+                        pclsize:=12;
                         setsize;
                       end else begin
                         font.Style:=font.Style + [fsBold];
@@ -712,14 +728,10 @@ begin
                         pcl:=False;
                         read(fh,k);
                         if not dp and (byte(k) mod 2=1) Then
-                        begin
-                          Font.Name:=fp;
-                          //Font.Size:=Round( (cond div cpi * dw * Abs(Font.Height)) / (Metrics.tmHeight + Metrics.tmExternalLeading));
-                        end
+                          Font.Name:=fp
                         Else if dp and (byte(k) mod 2=0) Then
                         begin
                           Font.Name:=ff;
-                          //font.Size := cond div cpi * dw;
                         end;
                         dp:=Boolean(byte(k) mod 2);
 {$ifdef WIN32}
@@ -767,8 +779,7 @@ begin
                      MoveTo(PenPos.X ,PenPos.Y + n);
                      LineTo(PenPos.X+ CharWidth ,PenPos.Y);
                      MoveTo(PenPos.X ,PenPos.Y - n);
-                  end else if dp
-                     then s:=k
+                  end else if dp then s:=k
                      else MoveTo(PenPos.X+ CharWidth ,PenPos.Y);
                end;
           '_': begin
