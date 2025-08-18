@@ -185,7 +185,7 @@ begin
  //SetTextAlign(canv.handle, TA_BASELINE or TA_LEFT or TA_NOUPDATECP);
 
  ff:='Consolas';//'Lucida Console'; //'Consolas';//'Courier New';
- fp:='Times New Roman'; //'Verdana'; //'Tahoma'; //'Trebuchet MS'; //'Verdana';//'Times New Roman';
+ fp:='Tahoma'; //'Trebuchet MS'; //'Verdana';//'Times New Roman';
 
  with canv.font do begin
 {$ifndef UTF8}
