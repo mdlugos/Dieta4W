@@ -396,7 +396,9 @@ begin
                                            MoveTo(PenPos.X,Round(l*font.pixelsperinch /120))
                                          end;
                                     'C': begin
-                                           MoveTo(Round(l*font.pixelsperinch / 25),PenPos.Y)
+                                           if s[1] in ['+','-']
+                                            Then MoveTo(PenPos.X+Round(l*font.pixelsperinch / 25),PenPos.Y)
+                                            else MoveTo(Round(l*font.pixelsperinch / 25),PenPos.Y)
                                          end;
                                     'H': begin
                                            MoveTo(Round(l*font.pixelsperinch /120),PenPos.Y)
@@ -841,7 +843,7 @@ begin
  end;
  fname := paramstr(1);
  if not fileexists(fname) then begin
-    writeln('Zˆy parametr - podany plik nie istnieje');
+    writeln('Z˜y parametr - podany plik nie istnieje');
     exit;
  end;
  s:=Paramstr(2);
