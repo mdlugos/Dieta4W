@@ -171,7 +171,7 @@ begin
  np:=False; //new page
  ds:=0; //superscript
  cpi:=10;
- //pclheight:=16;
+ pclsize:=12;
  cond:=120;
  palette:=-4;
  lpifix:= False;
@@ -192,7 +192,6 @@ begin
    charset := OEM_CHARSET;
 {$endif}
    name := ff;
-   pclsize:=12;
  end;
 
  setsize;
@@ -485,31 +484,25 @@ begin
                                   case UpCase(k) of
                                     'S': case Byte(Round(l)) of
                                             0: begin
-                                                  if dp then pclsize:=12      //Round(cond * dw / cpi);
-                                                  else begin
-                                                      cond:=120;
-                                                      cpi:=10;
-                                                      dw:=1;
-                                                  end;
-                                                  setsize;
+                                                 pclsize:=12;      //Round(cond * dw / cpi);
+                                                 cond:=120;
+                                                 cpi:=10;
+                                                 dw:=1;
+                                                 setsize;
                                                end;
                                             2: begin
-                                                  if dp then pclsize:=7.2
-                                                  else begin
-                                                    cond:=72;
-                                                    cpi:=10;
-                                                    dw:=1;
-                                                 end;
-                                                    setsize;
+                                                  pclsize:=7.2;
+                                                  cond:=72;
+                                                  cpi:=10;
+                                                  dw:=1;
+                                                  setsize;
                                                  end;
                                             4: begin
-                                                  if dp then pclsize:=10
-                                                  else begin
-                                                    cond:=120;
-                                                    cpi:=12;
-                                                    dw:=1;
-                                                 end;
-                                                    setsize;
+                                                  pclsize:=10;
+                                                  cond:=120;
+                                                  cpi:=12;
+                                                  dw:=1;
+                                                  setsize;
                                                  end;
                                          end;
                                   end;
@@ -534,9 +527,7 @@ begin
                                            s:='';
                                          end;
                                     'H': begin
-                                           //Round(cond * dw * canv.Font.PixelsPerInch / (72 * cpi));
-                                          if dp then pclsize:= 120/l
-                                          else begin
+                                           pclsize:= 120/l;
                                            cond:=120;
                                            cpi:=l;
                                            dw:=1;
@@ -551,12 +542,11 @@ begin
                                              cond:=72;
                                              cpi:=12;
                                            end;
-                                           end;
                                            setsize;
                                          end;
                                     'V': if dp then begin
-                                          if dp then pclsize:=l
-                                          else cond:=l * cpi / dw;
+                                           pclsize:=l;
+                                           cond:=l * cpi / dw;
                                            setsize;
                                          end;
                                     'P': begin
@@ -732,9 +722,7 @@ begin
                         if not dp and (byte(k) mod 2=1) Then
                           Font.Name:=fp
                         Else if dp and (byte(k) mod 2=0) Then
-                        begin
                           Font.Name:=ff;
-                        end;
                         dp:=Boolean(byte(k) mod 2);
 {$ifdef WIN32}
 //                        font.charset := OEM_CHARSET;
@@ -843,7 +831,7 @@ begin
  end;
  fname := paramstr(1);
  if not fileexists(fname) then begin
-    writeln('Z˜y parametr - podany plik nie istnieje');
+    writeln('Zˆy parametr - podany plik nie istnieje');
     exit;
  end;
  s:=Paramstr(2);
