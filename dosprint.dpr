@@ -74,7 +74,7 @@ procedure setlpi;
 begin
  GetTextMetrics(Canv.Handle, Metrics);
  lpi := canv.font.pixelsperinch / Metrics.tmHeight;
- lpi:=lpi/dw; //podw¢jna wysoko˜† na drukarce Epson
+ lpi:=lpi * dw; //kompensacja
  if lpi>6.4 then lpi:=6.4;
 end;
 

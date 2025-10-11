@@ -49,7 +49,7 @@ Conditionals=UTF8
 DebugSourceDirs=$(DELPHI)\Source\Vcl
 UsePackages=0
 [Parameters]
-RunParams=a.prn SCREEN
+RunParams=d:\m\zywiec\dieta\wydruk.txt SCREEN
 HostApplication=
 [Language]
 ActiveLang=
