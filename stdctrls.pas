@@ -4138,10 +4138,10 @@ begin
     SaveFont := SelectObject(DC, Font.Handle);
     f:=0;
     if copy(Caption,1,3)=BOM then
-      f := MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED or MB_ERR_INVALID_CHARS, PAnsiChar(Caption)+3,Length(Caption)-2,nil,0);
+      f := MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, PAnsiChar(Caption)+3,Length(Caption)-2,nil,0);
     if f>0 then begin
         SetLength(w, f-1);
-        MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED,PAnsiChar(Caption)+3,Length(Caption)-2,PWideChar(w),Length(w)+1);
+        MultiByteToWideChar(CP_UTF8, 0, PAnsiChar(Caption)+3,Length(Caption)-2,PWideChar(w),Length(w)+1);
         GetTextExtentPoint32W(DC, PWideChar(w), Length(w), TextSize);
     end else GetTextExtentPoint32(DC, PChar(Caption), Length(Caption), TextSize);
     SelectObject(DC, SaveFont);

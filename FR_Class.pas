@@ -3221,10 +3221,10 @@ var
       f := f or ETO_RTLREADING;
     k:=0;
     if copy(Str,1,3)=BOM then
-      k := MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED or MB_ERR_INVALID_CHARS, PAnsiChar(Str)+3,Length(Str)-2,nil,0);
+      k := MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, PAnsiChar(Str)+3,Length(Str)-2,nil,0);
     if (k>0) Then begin
       SetLength(w, k-1);
-      MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED,PAnsiChar(Str)+3,Length(Str)-2,PWideChar(w),Length(w)+1);
+      MultiByteToWideChar(CP_UTF8, 0,PAnsiChar(Str)+3,Length(Str)-2,PWideChar(w),Length(w)+1);
       ExtTextOutW(Canvas.Handle, curx, cury, f, @DR, PWideChar(w), Length(w), nil);
     end else ExtTextOut(Canvas.Handle, curx, cury, f, @DR, PChar(str), Length(str), nil);
   end;

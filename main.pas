@@ -985,6 +985,8 @@ begin
            src:=copy(ElementyJedn.AsString,2,ElementyElement.Size);
            if Pos('uszcz',ElementyNazwa.AsString)<>0
              Then Waga:=9
+           else if Pos('onnik',ElementyNazwa.AsString)<>0
+             Then Waga:=2
              Else Waga:=4;
          end;
          Next;

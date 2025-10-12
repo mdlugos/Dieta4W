@@ -2215,7 +2215,7 @@ begin
   if CanvasOrientation = coRightToLeft then Inc(X, TextWidth(Text) + 1);
   k:=0;
   if copy(Text,1,3)=BOM then
-    k := MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED {or MB_ERR_INVALID_CHARS}, PAnsiChar(Text)+3,Length(Text)-2,nil,0);
+    k := MultiByteToWideChar(CP_UTF8, 0, PAnsiChar(Text)+3,Length(Text)-2,nil,0);
   if (k>0) Then begin
     SetLength(w, k-1);
     if k>1 then MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED,PAnsiChar(Text)+3,Length(Text)-2,PWideChar(w),Length(w)+1);
@@ -2240,10 +2240,10 @@ begin
      (CanvasOrientation = coRightToLeft) then Inc(X, TextWidth(Text) + 1);
   k:=0;
   if copy(Text,1,3)=BOM then
-    k := MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED or MB_ERR_INVALID_CHARS, PAnsiChar(Text)+3,Length(Text)-2,nil,0);
+    k := MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, PAnsiChar(Text)+3,Length(Text)-2,nil,0);
   if (k>0) Then begin
     SetLength(w, k-1);
-    if k>1 then MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED,PAnsiChar(Text)+3,Length(Text)-2,PWideChar(w),Length(w)+1);
+    if k>1 then MultiByteToWideChar(CP_UTF8, 0,PAnsiChar(Text)+3,Length(Text)-2,PWideChar(w),Length(w)+1);
     Windows.ExtTextOutW(FHandle, X, Y, Options, @Rect, PWideChar(w), Length(w), nil);
   end else Windows.ExtTextOut(FHandle, X, Y, Options, @Rect, PChar(Text), Length(Text), nil);
   Changed;
@@ -2260,11 +2260,11 @@ begin
   f:=0;
   if copy(Text,1,3)=BOM then begin
     l := Length(Text);
-    f := MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED {or MB_ERR_INVALID_CHARS}, PAnsiChar(Text)+3,l-2,nil,0);
+    f := MultiByteToWideChar(CP_UTF8, 0, PAnsiChar(Text)+3,l-2,nil,0);
   end;
   if (f>0) Then begin
       SetLength(w, f-1);
-      if f>1 then MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED,PAnsiChar(Text)+3,Length(Text)-2,PWideChar(w),Length(w)+1);
+      if f>1 then MultiByteToWideChar(CP_UTF8, 0,PAnsiChar(Text)+3,Length(Text)-2,PWideChar(w),Length(w)+1);
       Windows.GetTextExtentPoint32W(FHandle, PWideChar(w), Length(w), Result);
   end else Windows.GetTextExtentPoint32(FHandle, PChar(Text), Length(Text), Result);
 end;
