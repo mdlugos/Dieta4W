@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 797
-  Top = 170
+  Left = 193
+  Top = 264
   Width = 1033
   Height = 519
   Caption = 'Dieta'
@@ -23,7 +23,7 @@ object MainForm: TMainForm
   TextHeight = 13
   object MsgBar: TPanel
     Left = 0
-    Top = 443
+    Top = 444
     Width = 1017
     Height = 17
     Align = alBottom
@@ -2879,7 +2879,9 @@ object MainForm: TMainForm
       'SpeedBar1.BtnOffsetHorz'
       'SpeedBar1.BtnOffsetVert'
       'PrintDlg.InitialDir'
-      'PrintDlg.FileName')
+      'PrintDlg.FileName'
+      'EleJob.ReadOnly'
+      'Elementy.ReadOnly')
     StoredValues = <
       item
         Name = 'SavePath'
