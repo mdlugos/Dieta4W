@@ -224,10 +224,10 @@ begin
          if not checkstart Then Break;
          n:=Length(s);
 {$ifdef UTF8}
-         n:=MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED,PAnsiChar(s),n+1,nil,0)-1;
+         n:=MultiByteToWideChar(CP_UTF8, 0, PAnsiChar(s), n+1, nil, 0)-1;
          if n>Length(w) then
             SetLength(w,n);
-         MultiByteToWideChar(CP_UTF8,MB_PRECOMPOSED,PAnsiChar(s),Length(s)+1,PWideChar(w),n+1);
+         MultiByteToWideChar(CP_UTF8, 0, PAnsiChar(s), Length(s)+1, PWideChar(w), n+1);
 {$endif}
          fs:=Font.Style;
          if ds=0 Then // sup/super script
@@ -841,9 +841,12 @@ begin
     Application.CreateForm(Tview, view);
     with view.image1 do begin
       //GetTextMetrics(canvas.Handle, Metrics);
-      Printer.orientation := poPortrait;
-      clientheight:=Round(view.pixelsperinch * Printer.PageHeight / getdevicecaps(Printer.handle,LOGPIXELSY));
-      clientwidth:=Round(view.pixelsperinch * Printer.PageWidth / getdevicecaps(Printer.handle,LOGPIXELSX));
+      //Printer.orientation := poPortrait;
+      //clientheight:=Round(view.pixelsperinch * Printer.PageHeight / getdevicecaps(Printer.handle,LOGPIXELSY));
+      //clientwidth:=Round(view.pixelsperinch * Printer.PageWidth / getdevicecaps(Printer.handle,LOGPIXELSX));
+
+      clientheight:=Round(view.pixelsperinch * 5945 / 508);
+      clientwidth:=Round(view.pixelsperinch * 4205 / 508);
       picture.bitmap.height:=clientheight;
       picture.bitmap.width:=clientwidth;
       canv:=Canvas;
@@ -851,7 +854,7 @@ begin
       pdraw:=@draw;
     end;
     Application.Run;
- end else begin
+ end else if Printer <> nil then begin
    isprinter:=True;
    if s<>'' Then begin
    d:=StrToIntDef(s,-1);
@@ -862,6 +865,7 @@ begin
    canv:=Printer.Canvas;
    canv.font.pixelsperinch:=getdevicecaps(Printer.handle,LOGPIXELSX);
    draw;
- end;
+ end else
+   writeln('Brak drukarki!');
 
 end.
